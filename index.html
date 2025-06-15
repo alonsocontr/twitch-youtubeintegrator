@@ -20,36 +20,71 @@
       #player    { position:absolute; }
     }
 
-    /* PORTRAIT – video 40 %, chat 60 % ------------------------------- */
-    @media (orientation: portrait) {
-      body       { flex-direction: column; }
-      #playerBox { flex:0 0 40vh; max-height:40vh; }
-      #chat      { flex:1 1 auto; min-height:60vh; overflow:auto; }
+    /* Fallback for browsers without aspect-ratio support */
+    @supports not (aspect-ratio: 16/9) {
+      #playerBox { height: 0; padding-bottom: 56.25%; }
+      #player    { position: absolute; }
     }
 
-    /* PHONE-LANDSCAPE – chat ≥ 33 %, video ≤ 67 % -------------------- */
-    @media (orientation: landscape) and (max-width:900px) {
-      body       { height:100svh; overflow:hidden; }
+    /* PORTRAIT – video 40 %, chat 60 % ------------------------------- */
+    @media (orientation: portrait) {
+      body {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
 
-      /* Video fills full height and stays 16:9 but never wider than 67 % */
       #playerBox {
-        flex:0 0 67vw;
-        width:67vw;
-        height:100%;
-        overflow:hidden;
-        position:relative;
-      }
-      #player {
-        position:absolute;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
-        object-fit:cover; /* Crops excess left/right so no bars */
+        width: 90%;
+        aspect-ratio: 16/9;
+        position: relative;
+        flex: 0 0 auto;
       }
 
-      /* Chat keeps at least one-third of viewport width */
-      #chat { flex:1 1 0; min-width:33vw; overflow:auto; }
+      #chat {
+        width: 100%;
+        flex: 1 1 auto;
+        min-height: 50vh;
+        overflow: auto;
+        border: none;
+      }
+    }
+
+
+    /* PHONE-LANDSCAPE – chat ≥ 33 %, video ≤ 67 % -------------------- */
+    @media (orientation: landscape) and (max-width: 900px) {
+      body {
+        flex-direction: column;
+        height: 100svh;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #playerBox {
+        width: 90%;
+        aspect-ratio: 16/9;
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      #player {
+        position: absolute;
+        width: 100%;
+        height: 75%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: none;
+      }
+
+      #chat {
+        width: 100%;
+        flex: 1 1 auto;
+        overflow: auto;
+        min-height: 30vh;
+        border: none;
+      }
     }
   </style>
 </head>
