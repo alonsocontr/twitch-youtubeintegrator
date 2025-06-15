@@ -56,7 +56,8 @@
       body {
         flex-direction: row;
         height: 100svh;
-        overflow: hidden;
+        overflow: auto; /* important fix */
+        -webkit-overflow-scrolling: touch; /* smoother iOS scroll */
       }
 
       #playerBox {
