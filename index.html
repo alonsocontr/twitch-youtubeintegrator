@@ -54,36 +54,35 @@
     /* PHONE-LANDSCAPE – chat ≥ 33 %, video ≤ 67 % -------------------- */
     @media (orientation: landscape) and (max-width: 900px) {
       body {
-        flex-direction: column;
+        flex-direction: row;
         height: 100svh;
         overflow: hidden;
-        align-items: center;
-        justify-content: center;
       }
 
       #playerBox {
-        width: 90%;
-        aspect-ratio: 16/9;
+        flex: 0 0 67vw;
+        width: 67vw;
+        height: 100%;
+        aspect-ratio: auto;
         position: relative;
-        flex: 0 0 auto;
       }
 
       #player {
-        position: absolute;
         width: 100%;
         height: 75%;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        position: absolute;
         border: none;
       }
 
       #chat {
-        width: 100%;
-        flex: 1 1 auto;
+        flex: 1 1 0;
+        min-width: 33vw;
         overflow: auto;
-        min-height: 30vh;
         border: none;
+        height: 100%;
       }
     }
   </style>
