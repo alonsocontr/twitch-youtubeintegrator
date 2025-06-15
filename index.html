@@ -57,6 +57,7 @@
         flex-direction: row;
         height: 100svh;
         overflow: auto; /* important fix */
+        touch-action: auto;
         -webkit-overflow-scrolling: touch; /* smoother iOS scroll */
       }
 
@@ -79,13 +80,14 @@
       }
 
       #chat {
-        flex: 1 1 0;
         min-width: 33vw;
-        overflow: auto;
-        border: none;
         height: 100%;
-      }
-    }
+        overflow: auto;
+        touch-action: auto;
+        -webkit-overflow-scrolling: touch;
+        border: none;
+  }
+}
   </style>
 </head>
 <body>
